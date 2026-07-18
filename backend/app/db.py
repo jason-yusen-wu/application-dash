@@ -34,7 +34,7 @@ class User(Base):
     __table_args__ = (UniqueConstraint("google_sub"),)
 
 
-status_enum_list = ["submitted", "OA", "interview", "offer", "rejected"]
+status_enum_list = ["applied", "OA", "interview", "offer", "rejected"]
 status_enum_list_string = ", ".join([f"'{enum}'" for enum in status_enum_list])
 
 
@@ -47,7 +47,7 @@ class AppStatus(Base):
     )
 
 
-class Applications(Base):
+class Application(Base):
     __tablename__ = "applications"
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -65,7 +65,7 @@ class Applications(Base):
     applied_at: Mapped[datetime] = mapped_column()
 
 
-class AppEvents(Base):
+class AppEvent(Base):
     __tablename__ = "application_events"
 
     id: Mapped[int] = mapped_column(primary_key=True)
